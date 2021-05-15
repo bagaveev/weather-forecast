@@ -1,0 +1,58 @@
+@import "../../common/styles/common";
+
+.weatherForecast{
+  height: 100vh;
+  min-height: 1094px;
+  background-color: #373AF5;
+  position: relative;
+  padding-top: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &::before{
+    content: "";
+    background-image: url("./images/academy-Weather-forecast-Bg-buttom.png");
+    @include media-retina() {
+      background-image: url("images/academy-Weather-forecast-Bg-buttom@2x.png");
+    }
+    width: 1440px;
+    height: 1094px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &::after{
+    content: "";
+    background-image: url("./images/academy-Weather-forecast-Bg-up-1.png");
+    @include media-retina() {
+      background-image: url("images/academy-Weather-forecast-Bg-up@2x.png");
+    }
+    width: 1440px;
+    height: 1094px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__title{
+    font-weight: bold;
+    font-size: 102px;
+    line-height: 122px;
+    color: #FFFFFF;
+    display: flex;
+    text-align: center;
+
+    &__bottom{
+      margin-top: 90px;
+      margin-left: -45px;
+    }
+
+  }
+
+}
