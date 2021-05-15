@@ -1,0 +1,26 @@
+@mixin media-retina($expression: "") {
+  // duplication of improper sorting code
+  @if $expression != "" {
+    $expression: "" +
+      "#{$expression} and (min-device-pixel-ratio: 2), "+"#{$expression} and (min-resolution: 192dpi), "+
+      "#{$expression} and (min-resolution: 2dppx) ";
+
+    @include media($expression: $expression) {
+      @content;
+    }
+  } @else {
+    $expression: "" +
+      "#{$expression}(min-device-pixel-ratio: 2), "+"#{$expression}(min-resolution: 192dpi), "+
+      "#{$expression}(min-resolution: 2dppx) ";
+
+    @include media($expression: $expression) {
+      @content;
+    }
+  }
+}
+
+@mixin media($expression, $media_type: "only screen") {
+  @media #{$media_type} and #{$expression} {
+    @content;
+  }
+}
