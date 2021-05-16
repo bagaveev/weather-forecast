@@ -1,6 +1,8 @@
 import React from 'react'
 import './App.scss'
 import OpenWeather from '../../services/open-weather'
+import FutureForecast from '../FutureForecast'
+import PastForecast from '../PastForecast'
 
 function App () {
   const openWeather = new OpenWeather()
@@ -24,10 +26,11 @@ function App () {
       <div className="weatherForecast__content">
           <div className="weatherForecast__content__block">
               <h2 className="weatherForecast__content__block__subtitle">7 Days Forecast</h2>
-
+              <FutureForecast/>
           </div>
           <div className="weatherForecast__content__block">
               <h2 className="weatherForecast__content__block__subtitle">Forecast for a Date in the Past</h2>
+              <PastForecast/>
           </div>
       </div>
     </div>
