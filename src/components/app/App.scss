@@ -44,6 +44,8 @@
     color: #FFFFFF;
     display: flex;
     text-align: center;
+    position: relative;
+    z-index: 2;
 
     &__bottom{
       margin-top: 90px;
