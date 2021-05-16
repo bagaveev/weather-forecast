@@ -10,34 +10,31 @@
   flex-direction: column;
   align-items: center;
 
-  &::before{
+  &::before, &::after{
     content: "";
-    background-image: url("./images/academy-Weather-forecast-Bg-buttom.png");
-    @include media-retina() {
-      background-image: url("images/academy-Weather-forecast-Bg-buttom@2x.png");
-    }
     width: 1440px;
     height: 1094px;
     position: absolute;
-    left: 0;
-    bottom: 0;
     background-size: contain;
     background-repeat: no-repeat;
   }
 
+  &::before{
+    background-image: url("./images/academy-Weather-forecast-Bg-buttom.png");
+    @include media-retina() {
+      background-image: url("images/academy-Weather-forecast-Bg-buttom@2x.png");
+    }
+    left: 0;
+    bottom: 0;
+  }
+
   &::after{
-    content: "";
     background-image: url("./images/academy-Weather-forecast-Bg-up-1.png");
     @include media-retina() {
       background-image: url("images/academy-Weather-forecast-Bg-up@2x.png");
     }
-    width: 1440px;
-    height: 1094px;
-    position: absolute;
     right: 0;
     top: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
   }
 
   &__title{
@@ -60,6 +57,7 @@
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    position: relative;
 
     &__block{
       background: #FFFFFF;
