@@ -1,7 +1,15 @@
 import React from 'react'
 import './App.scss'
+import OpenWeather from '../../services/open-weather'
 
 function App () {
+  const openWeather = new OpenWeather()
+
+  openWeather.getWeather7Days('55.796127', '49.106405')
+    .then((person: any) => {
+      console.log(person)
+    })
+
   return (
     <div className="weatherForecast">
       <h1 className="weatherForecast__title">
