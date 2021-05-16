@@ -14,36 +14,61 @@ export default class OpenWeather {
     }
 
     async getWeather7Days (lat: any, lon: any) {
-      const weather = await this.getResource(`/onecall?lat=${lat}&lon=${lon}&lang=ru&units=metric&exclude=hourly,minutely&appid=${this._apiKey}`)
+      const weather = await this.getResource(`/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=hourly,minutely&appid=${this._apiKey}`)
       return this._transformWeather7Days(weather)
     }
 
-    _getDate (item:any) {
-      return item.daily.map(
+    async getWeatherPrevious (lat: any, lon: any, time: any) {
+      const weather = await this.getResource(`/onecall/timemachine?lat=${lat}&lon=${lon}&units=metric&dt=${time / 1000}&appid=${this._apiKey}`)
+      return this._transformWeatherPreviousDay(weather)
+    }
+
+    fromDtToString (elem:any) {
+      const milliseconds = elem.dt * 1000
+      return new Date(milliseconds)
+    }
+
+    _getData7Days (item:any) {
+      const dailyTemp = item.daily.slice(1).map(
         (el:any) => {
-          const milliseconds = el.dt * 1000
-          const dateObject = new Date(milliseconds)
           return {
-            day: dateObject.toLocaleString('en-US', { day: 'numeric' }),
-            month: dateObject.toLocaleString('en-US', { month: 'long' }),
-            year: dateObject.toLocaleString('en-US', { year: 'numeric' })
+            day: this.fromDtToString(el).toLocaleString('en-US', { day: 'numeric' }),
+            month: this.fromDtToString(el).toLocaleString('en-US', { month: 'long' }),
+            year: this.fromDtToString(el).toLocaleString('en-US', { year: 'numeric' }),
+            tmp: Math.round(el.temp.max),
+            icon: `http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`
           }
         }
       )
+
+      const currentTemp = {
+        day: this.fromDtToString(item.current).toLocaleString('en-US', { day: 'numeric' }),
+        month: this.fromDtToString(item.current).toLocaleString('en-US', { month: 'long' }),
+        year: this.fromDtToString(item.current).toLocaleString('en-US', { year: 'numeric' }),
+        tmp: Math.round(item.current.temp),
+        icon: `http://openweathermap.org/img/wn/${item.current.weather[0].icon}@2x.png`
+      }
+
+      dailyTemp.splice(0, 0, currentTemp)
+
+      return dailyTemp
     }
 
-    _getTmp (item:any) {
-      return item.daily.map(
-        (el:any) => {
-          return el.temp.day.toFixed(0)
-        }
-      )
+    _getPreviousDay (item:any) {
+      return {
+        day: this.fromDtToString(item.current).toLocaleString('en-US', { day: 'numeric' }),
+        month: this.fromDtToString(item.current).toLocaleString('en-US', { month: 'long' }),
+        year: this.fromDtToString(item.current).toLocaleString('en-US', { year: 'numeric' }),
+        tmp: Math.round(item.current.temp),
+        icon: `http://openweathermap.org/img/wn/${item.current.weather[0].icon}@2x.png`
+      }
     }
 
     _transformWeather7Days = (weather: any) => {
-      return {
-        date: this._getDate(weather),
-        tmp: this._getTmp(weather)
-      }
+      return this._getData7Days(weather)
+    }
+
+    _transformWeatherPreviousDay = (weather: any) => {
+      return this._getPreviousDay(weather)
     }
 }

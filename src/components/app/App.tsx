@@ -5,7 +5,12 @@ import OpenWeather from '../../services/open-weather'
 function App () {
   const openWeather = new OpenWeather()
 
-  openWeather.getWeather7Days('55.796127', '49.106405')
+  openWeather.getWeather7Days(55.796127, 49.106405)
+    .then((person: any) => {
+      console.log(person)
+    })
+
+  openWeather.getWeatherPrevious(55.796127, 49.106405, 1621014561000)
     .then((person: any) => {
       console.log(person)
     })
