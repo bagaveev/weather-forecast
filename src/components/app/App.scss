@@ -55,4 +55,34 @@
 
   }
 
+  &__content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+
+    &__block{
+      background: #FFFFFF;
+      box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+      border-radius: 8px;
+      padding: 50px 58px 90px;
+      width: 100%;
+      max-width: 660px;
+
+      &:first-child{
+        margin-right: 34px;
+      }
+
+      &__subtitle{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 32px;
+        color: #2C2D76;
+        margin-bottom: 32px;
+      }
+
+    }
+  }
+
 }

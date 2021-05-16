@@ -21,6 +21,15 @@ function App () {
           <span className="weatherForecast__title__top">Weather</span>
           <span className="weatherForecast__title__bottom">forecast</span>
       </h1>
+      <div className="weatherForecast__content">
+          <div className="weatherForecast__content__block">
+              <h2 className="weatherForecast__content__block__subtitle">7 Days Forecast</h2>
+
+          </div>
+          <div className="weatherForecast__content__block">
+              <h2 className="weatherForecast__content__block__subtitle">Forecast for a Date in the Past</h2>
+          </div>
+      </div>
     </div>
   )
 }
