@@ -1,0 +1,39 @@
+.calc-forecast-template{
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__arrow{
+    position: absolute;
+
+    &_left{
+      left: -40px;
+    }
+
+    &_right{
+      right: -40px;
+    }
+
+  }
+
+  &__items{
+    display: flex;
+    flex-shrink: 0;
+
+    &__overlay{
+      width: 100%;
+      max-width: 542px;
+      overflow: hidden;
+    }
+
+    .visual-card-template{
+      width: 174px;
+      flex-shrink: 0;
+
+      &:not(:last-child){
+        margin-right: 10px;
+      }
+    }
+  }
+
+}
