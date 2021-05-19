@@ -10,7 +10,7 @@ interface IShowForecast {
 }
 
 const VisualCard:React.FC<IShowForecast> = (props: any) => {
-  const currentTemp = (props.tmp > 0) ? `+${props.tmp}` : `-${props.tmp}`
+  const currentTemp = (props.tmp > 0) ? `+${props.tmp}` : (props.tmp < 0) ? `-${props.tmp}` : `${props.tmp}`
 
   return (
         <div className="visual-card-template">

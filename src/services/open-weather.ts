@@ -1,6 +1,7 @@
 export default class OpenWeather {
     _apiBase = 'https://api.openweathermap.org/data/2.5';
     _apiKey = 'c8a8fb5580fdb166e938845912ca6d28';
+    _imageBase = 'http://openweathermap.org/img/wn/'
 
     async getResource (url: string) {
       const res = await fetch(`${this._apiBase}${url}`)
@@ -36,7 +37,7 @@ export default class OpenWeather {
             month: this.fromDtToString(el).toLocaleString('en-US', { month: 'long' }),
             year: this.fromDtToString(el).toLocaleString('en-US', { year: 'numeric' }),
             tmp: Math.round(el.temp.max),
-            icon: `http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`
+            icon: `${this._imageBase}${el.weather[0].icon}@2x.png`
           }
         }
       )
@@ -46,7 +47,7 @@ export default class OpenWeather {
         month: this.fromDtToString(item.current).toLocaleString('en-US', { month: 'long' }),
         year: this.fromDtToString(item.current).toLocaleString('en-US', { year: 'numeric' }),
         tmp: Math.round(item.current.temp),
-        icon: `http://openweathermap.org/img/wn/${item.current.weather[0].icon}@2x.png`
+        icon: `${this._imageBase}${item.current.weather[0].icon}@2x.png`
       }
 
       dailyTemp.splice(0, 0, currentTemp)
@@ -60,7 +61,7 @@ export default class OpenWeather {
         month: this.fromDtToString(item.current).toLocaleString('en-US', { month: 'long' }),
         year: this.fromDtToString(item.current).toLocaleString('en-US', { year: 'numeric' }),
         tmp: Math.round(item.current.temp),
-        icon: `http://openweathermap.org/img/wn/${item.current.weather[0].icon}@2x.png`
+        icon: `${this._imageBase}${item.current.weather[0].icon}@2x.png`
       }
     }
 

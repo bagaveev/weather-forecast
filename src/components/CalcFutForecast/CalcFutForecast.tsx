@@ -36,8 +36,8 @@ const CalcFutForecast:React.FC<ISelectCityProps> = (props: any) => {
 
   useEffect(() => {
     openWeather.getWeather7Days(lat, lon)
-      .then((person: any) => {
-        setForecastAnswer(person)
+      .then((forecast: any) => {
+        setForecastAnswer(forecast)
       })
   }, [lat, lon])
 
