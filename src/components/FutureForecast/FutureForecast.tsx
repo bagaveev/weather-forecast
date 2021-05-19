@@ -1,26 +1,24 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import './FutureForecast.scss'
 import ErrorChoiceNotif from '../../common/components/EmptyChoiceNotif'
 import SelectCity from '../../common/components/SelectCity'
+import CalcFutForecast from '../CalcFutForecast'
 
-export default class FutureForecast extends Component {
-    state = {
-      selectCity: null
-    };
+const FutureForecast:React.FC = () => {
+  const [city, setCity] = useState('')
 
-    onCitySelected = (name: any) => {
-      console.log(name)
-      this.setState({
-        selectCity: name
-      })
-    }
+  const visibleWeather = (!city) ? <ErrorChoiceNotif/> : <CalcFutForecast city={city}/>
 
-    render () {
-      return (
+  const onCitySelected = (name: any) => {
+    setCity(name)
+  }
+
+  return (
             <div>
-                <SelectCity OnCitySelected={this.onCitySelected}/>
-                <ErrorChoiceNotif/>
+                <SelectCity OnCitySelected={onCitySelected}/>
+                {visibleWeather}
             </div>
-      )
-    }
+  )
 }
+
+export default FutureForecast

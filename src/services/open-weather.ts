@@ -1,6 +1,6 @@
 export default class OpenWeather {
     _apiBase = 'https://api.openweathermap.org/data/2.5';
-    _apiKey = 'c8aeb52ea628ac2aa0021eae44ce11f7';
+    _apiKey = 'c8a8fb5580fdb166e938845912ca6d28';
 
     async getResource (url: string) {
       const res = await fetch(`${this._apiBase}${url}`)
