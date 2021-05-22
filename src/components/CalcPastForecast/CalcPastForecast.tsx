@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import OpenWeather from '../../services/open-weather'
 import { COORDINATES } from '../../common/store/data'
-// import VisualCard from '../../common/components/VisualCard'
 import './CalcPastForecast.scss'
 import VisualCard from '../../common/components/VisualCard'
 
