@@ -1,14 +1,20 @@
 @import "../../common/styles/common";
 
 .weatherForecast{
-  height: 100vh;
+  //height: 100vh;
   min-height: 1094px;
   background-color: #373AF5;
   position: relative;
   padding-top: 65px;
+  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include media('(max-width: 1450px)'){
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
   &::before, &::after{
     content: "";
@@ -62,6 +68,11 @@
     position: relative;
     z-index: 2;
 
+    @include media('(max-width: 1450px)'){
+      flex-direction: column;
+      align-items: center;
+    }
+
     &__block{
       background: #FFFFFF;
       box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
@@ -72,6 +83,12 @@
 
       &:first-child{
         margin-right: 34px;
+
+        @include media('(max-width: 1450px)'){
+          margin-right: 0;
+          margin-bottom: 34px;
+        }
+
       }
 
       &__subtitle{

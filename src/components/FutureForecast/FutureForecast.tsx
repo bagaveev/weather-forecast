@@ -14,7 +14,7 @@ const FutureForecast:React.FC = () => {
   }
 
   return (
-            <div>
+            <div className="future-forecast">
                 <SelectCity OnCitySelected={onCitySelected}/>
                 {visibleWeather}
             </div>
