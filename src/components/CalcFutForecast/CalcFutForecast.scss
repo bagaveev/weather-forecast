@@ -5,6 +5,11 @@
 
   &__arrow{
     position: absolute;
+    cursor: pointer;
+
+    &:hover, &:active{
+      opacity: 0.4;
+    }
 
     &_left{
       left: -40px;
@@ -23,6 +28,7 @@
     &__overlay{
       width: 100%;
       max-width: 542px;
+      min-height: 225px;
       overflow: hidden;
     }
 
