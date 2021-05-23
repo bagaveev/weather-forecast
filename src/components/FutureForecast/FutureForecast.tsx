@@ -7,7 +7,7 @@ import CalcFutForecast from '../CalcFutForecast'
 const FutureForecast:React.FC = () => {
   const [city, setCity] = useState('')
 
-  const visibleWeather = (!city) ? <ErrorChoiceNotif/> : <CalcFutForecast city={city}/>
+  const visibleWeather = (!city) ? <ErrorChoiceNotif text="Fill in all the fields and the weather will be displayed"/> : <CalcFutForecast city={city}/>
 
   const onCitySelected = (name: any) => {
     setCity(name)

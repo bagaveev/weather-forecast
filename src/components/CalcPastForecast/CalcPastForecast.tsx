@@ -3,6 +3,8 @@ import OpenWeather from '../../services/open-weather'
 import { COORDINATES } from '../../common/store/data'
 import './CalcPastForecast.scss'
 import VisualCard from '../../common/components/VisualCard'
+import Spinner from '../../common/components/Spinner'
+import ErrorChoiceNotif from '../../common/components/EmptyChoiceNotif'
 
 interface ISelectCityProps {
     city: string;
@@ -15,15 +17,19 @@ interface IForecastAnswer {
     year: string;
     tmp: number;
     icon: string;
+    cod: string;
+    message: string
 }
 
-const CalcPastForecast:React.FC<ISelectCityProps> = (props: any) => {
+const CalcPastForecast: React.FC<ISelectCityProps> = (props: any) => {
   const [forecastAnswer, setForecastAnswer] = useState({
     day: '',
     month: '',
     year: '',
     tmp: 0,
-    icon: ''
+    icon: '',
+    cod: '',
+    message: ''
   })
 
   const openWeather = new OpenWeather()
@@ -46,8 +52,9 @@ const CalcPastForecast:React.FC<ISelectCityProps> = (props: any) => {
   }, [lat, lon, props.date])
 
   const showComponent = (forecastAnswer.day && forecastAnswer.month && forecastAnswer.year && forecastAnswer.tmp && forecastAnswer.icon)
-    ? <VisualCard day={forecastAnswer.day} month={forecastAnswer.month} year={forecastAnswer.year} tmp={forecastAnswer.tmp} icon={forecastAnswer.icon}/>
-    : <></>
+    ? <VisualCard day={forecastAnswer.day} month={forecastAnswer.month} year={forecastAnswer.year}
+                      tmp={forecastAnswer.tmp} icon={forecastAnswer.icon}/>
+    : (forecastAnswer.cod && forecastAnswer.message) ? <ErrorChoiceNotif text={forecastAnswer.message[0].toUpperCase() + forecastAnswer.message.slice(1)}/> : <Spinner/>
 
   return (
         <div className="calc-past-forecast-template">

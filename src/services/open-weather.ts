@@ -6,10 +6,10 @@ export default class OpenWeather {
     async getResource (url: string) {
       const res = await fetch(`${this._apiBase}${url}`)
 
-      if (!res.ok) {
-        throw new Error(`Could not fetch ${url}` +
-                `, received ${res.status}`)
-      }
+      // if (!res.ok) {
+      //   throw new Error(`Could not fetch ${url}` +
+      //           `, received ${res.status}`)
+      // }
 
       return await res.json()
     }
@@ -21,6 +21,10 @@ export default class OpenWeather {
 
     async getWeatherPrevious (lat: any, lon: any, time: any) {
       const weather = await this.getResource(`/onecall/timemachine?lat=${lat}&lon=${lon}&units=metric&dt=${time / 1000}&appid=${this._apiKey}`)
+      if (weather.cod && weather.message) {
+        return weather
+      }
+
       return this._transformWeatherPreviousDay(weather)
     }
 

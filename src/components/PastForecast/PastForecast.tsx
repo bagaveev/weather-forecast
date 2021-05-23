@@ -10,7 +10,7 @@ const PastForecast: React.FC = () => {
 
   const [date, setDate] = useState(0)
 
-  const visibleWeather = (!city || !date) ? <ErrorChoiceNotif/> : <CalcPastForecast city={city} date={date}/>
+  const visibleWeather = (!city || !date) ? <ErrorChoiceNotif text="Fill in all the fields and the weather will be displayed"/> : <CalcPastForecast city={city} date={date}/>
 
   const onCitySelected = (name: any) => {
     setCity(name)
