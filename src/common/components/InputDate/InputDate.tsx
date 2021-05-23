@@ -18,6 +18,7 @@ const InputDate:React.FC<ISelectDateProps> = (props:any) => {
           type="date"
           name="date"
           className="input-date"
+          placeholder="YYYY-MM-DD"
           value={value}
           onChange={() => props.OnDateSelected(handleChange(event))}
       />
