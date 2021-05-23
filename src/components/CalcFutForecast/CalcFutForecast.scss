@@ -1,14 +1,25 @@
+@import "../../common/styles/common";
+
 .calc-forecast-template{
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
+
+  @include media('(max-width: 610px)') {
+    width: calc(100% + 24px);
+  }
 
   &__arrow{
     position: absolute;
     cursor: pointer;
 
+    @include media('(max-width: 820px)') {
+      display: none;
+    }
+
     &:hover, &:active{
-      opacity: 0.4;
+      opacity: 0.4 !important;
     }
 
     &_left{
@@ -30,6 +41,11 @@
       max-width: 542px;
       min-height: 225px;
       overflow: hidden;
+
+      @include media('(max-width: 820px)') {
+        overflow-x: auto;
+      }
+
     }
 
     .visual-card-template{
@@ -38,7 +54,19 @@
 
       &:not(:last-child){
         margin-right: 10px;
+
+        @include media('(max-width: 610px)') {
+          margin-right: 16px;
+        }
+
       }
+
+      &:last-child {
+        @include media('(max-width: 610px)') {
+          margin-right: 16px !important;
+        }
+      }
+
     }
   }
 

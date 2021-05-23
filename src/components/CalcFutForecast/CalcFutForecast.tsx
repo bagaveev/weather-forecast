@@ -30,7 +30,11 @@ const CalcFutForecast:React.FC<ISelectCityProps> = (props: any) => {
   const openWeather = new OpenWeather()
 
   let sliderElem:any
+  let sliderOverlay:any
   let visualCard:any
+  let leftArrow:any
+  let rightArrow:any
+
   let slideCount = 0
 
   let lat = ''
@@ -45,6 +49,7 @@ const CalcFutForecast:React.FC<ISelectCityProps> = (props: any) => {
   const setProperties = () => {
     sliderElem = document.querySelector('.calc-forecast-template__items')
     visualCard = document.querySelector('.visual-card-template')
+    sliderOverlay = document.querySelector('.calc-forecast-template__items__overlay')
 
     if (sliderElem) {
       slideCount = sliderElem.childElementCount
@@ -92,11 +97,50 @@ const CalcFutForecast:React.FC<ISelectCityProps> = (props: any) => {
         moveRight()
       }
     }
+
+    leftArrow = document.querySelector('.calc-forecast-template__arrow_left')
+    rightArrow = document.querySelector('.calc-forecast-template__arrow_right')
+
+    if (leftArrow) {
+      if (currentShift === 0) {
+        leftArrow.style.opacity = '0.4'
+        leftArrow.style.cursor = 'auto'
+      } else {
+        leftArrow.style.opacity = '1'
+        leftArrow.style.cursor = 'pointer'
+      }
+    }
+
+    if (rightArrow) {
+      if (currentShift === -(sliderWidth - 3 * sliderItemWidth)) {
+        rightArrow.style.opacity = '0.4'
+        rightArrow.style.cursor = 'auto'
+      } else {
+        rightArrow.style.opacity = '1'
+        rightArrow.style.cursor = 'pointer'
+      }
+    }
+
     document.addEventListener('keydown', ShiftByButtons)
     return () => {
       document.removeEventListener('keydown', ShiftByButtons)
     }
   })
+
+  useEffect(() => {
+    const resizeListener = () => {
+      setProperties()
+      setCurrentShift(0)
+      if (sliderOverlay) {
+        sliderOverlay.scrollLeft = 0
+      }
+    }
+    window.addEventListener('resize', resizeListener)
+
+    return () => {
+      window.removeEventListener('resize', resizeListener)
+    }
+  }, [])
 
   const renderItems = (arr:any) => {
     return arr.map((el: IForecastAnswer, key:number) => {
