@@ -17,6 +17,7 @@ const InputDate:React.FC<ISelectDateProps> = (props:any) => {
       <input
           type="date"
           name="expiration date"
+          className="input-date"
           value={value}
           onChange={() => props.OnDateSelected(handleChange(event))}
       />

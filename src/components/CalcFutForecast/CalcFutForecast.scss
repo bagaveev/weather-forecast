@@ -8,6 +8,7 @@
 
   @include media('(max-width: 610px)') {
     width: calc(100% + 24px);
+    align-self: flex-start;
   }
 
   &__arrow{

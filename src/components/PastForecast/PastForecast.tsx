@@ -5,7 +5,7 @@ import SelectCity from '../../common/components/SelectCity'
 import InputDate from '../../common/components/InputDate'
 import CalcPastForecast from '../CalcPastForecast/CalcPastForecast'
 
-const PastForecast:React.FC = () => {
+const PastForecast: React.FC = () => {
   const [city, setCity] = useState('')
 
   const [date, setDate] = useState(0)
@@ -21,11 +21,13 @@ const PastForecast:React.FC = () => {
   }
 
   return (
-        <>
-        <SelectCity OnCitySelected={onCitySelected}/>
-        <InputDate OnDateSelected={onDateSelected}/>
-          {visibleWeather}
-        </>
+        <div className="past-forecast">
+            <div className="past-forecast__choice">
+                <SelectCity OnCitySelected={onCitySelected}/>
+                <InputDate OnDateSelected={onDateSelected}/>
+            </div>
+            {visibleWeather}
+        </div>
   )
 }
 
