@@ -20,12 +20,11 @@ interface IForecastAnswer {
   icon: string
 }
 
-const CalcFutForecast:React.FC<ISelectCityProps> = (props: any) => {
+const CalcFutForecast = (props: ISelectCityProps) => {
   const [forecastAnswer, setForecastAnswer] = useState([])
   const [sliderWidth, setSliderWidth] = useState(0)
   const [sliderItemWidth, setSliderItemWidth] = useState(0)
   const [currentShift, setCurrentShift] = useState(0)
-  // const [visibleItems, setVisibleItems] = useState(3)
 
   const openWeather = new OpenWeather()
 

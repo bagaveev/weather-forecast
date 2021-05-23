@@ -21,7 +21,7 @@ interface IForecastAnswer {
     message: string
 }
 
-const CalcPastForecast: React.FC<ISelectCityProps> = (props: any) => {
+const CalcPastForecast = (props: ISelectCityProps) => {
   const [forecastAnswer, setForecastAnswer] = useState({
     day: '',
     month: '',

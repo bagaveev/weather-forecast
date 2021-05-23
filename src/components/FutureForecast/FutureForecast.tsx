@@ -10,7 +10,7 @@ const FutureForecast:React.FC = () => {
 
   const visibleWeather = (!city) ? <ErrorChoiceNotif text="Fill in all the fields and the weather will be displayed"/> : <CalcFutForecast city={city}/>
 
-  const onCitySelected = (name: any) => {
+  const onCitySelected = (name: string) => {
     setCity(name)
   }
 

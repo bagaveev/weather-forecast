@@ -3,11 +3,11 @@ import './SelectCustom.scss'
 import { COORDINATES } from '../../store/data'
 
 interface ISelectCityProps {
-    OnCitySelected?: any;
+    OnCitySelected: any;
     ClassDesc: string
 }
 
-const SelectCustom: React.FC<ISelectCityProps> = (props: any) => {
+const SelectCustom = (props: ISelectCityProps) => {
   const renderItems = (data: any) => {
     return Object.keys(data).map((city) => {
       return (

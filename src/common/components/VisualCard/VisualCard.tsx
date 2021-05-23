@@ -9,7 +9,7 @@ interface IShowForecast {
     icon: string
 }
 
-const VisualCard:React.FC<IShowForecast> = (props: any) => {
+const VisualCard:React.FC<IShowForecast> = (props: IShowForecast) => {
   const currentTemp = (props.tmp > 0) ? `+${props.tmp}` : (props.tmp < 0) ? `-${props.tmp}` : `${props.tmp}`
 
   return (

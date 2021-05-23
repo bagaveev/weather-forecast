@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import './InputDate.scss'
 
 interface ISelectDateProps {
-    OnDateSelected?: any;
+    OnDateSelected: any;
 }
 
-const InputDate:React.FC<ISelectDateProps> = (props:any) => {
+const InputDate:React.FC<ISelectDateProps> = (props:ISelectDateProps) => {
   const [value, setValue] = useState('')
 
   const handleChange = (event: any) => {
