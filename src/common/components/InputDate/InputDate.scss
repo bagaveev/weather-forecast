@@ -1,2 +1,31 @@
 @import "../../../common/styles/common";
 
+.input-date{
+  background: rgba(128, 131, 164, 0.06);
+  border: 2px solid rgba(128, 131, 164, 0.2);
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2C2D76;
+  cursor: pointer;
+  outline: none;
+
+  &:hover, &:focus{
+    border: 2px solid #373AF5;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    color: transparent;
+    opacity: 1;
+    background-image: url("./images/calendar.svg");
+    background-size: contain;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+
+}
