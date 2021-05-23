@@ -13,6 +13,8 @@
   color: #2C2D76;
   cursor: pointer;
   outline: none;
+  width: 100%;
+  max-width: 252px;
 
   &:hover, &:focus{
     border: 2px solid #373AF5;
