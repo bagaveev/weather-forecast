@@ -130,14 +130,25 @@
         line-height: 32px;
         color: #2C2D76;
         margin-bottom: 32px;
-
-        @include media('(max-width: 820px)') {
-          text-align: center;
-        }
-
       }
 
     }
+  }
+
+  &__bottom{
+    position: absolute;
+    z-index: 3;
+    bottom: 16px;
+
+    &__link{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 18px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+
   }
 
 }
