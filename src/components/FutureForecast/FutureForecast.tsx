@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import './FutureForecast.scss'
 import ErrorChoiceNotif from '../../common/components/EmptyChoiceNotif'
-import SelectCity from '../../common/components/SelectCity'
 import CalcFutForecast from '../CalcFutForecast'
+// import SelectCity from '../../common/components/SelectCity'
+import SelectCustom from '../../common/components/SelectCustom'
 
 const FutureForecast:React.FC = () => {
   const [city, setCity] = useState('')
@@ -15,7 +16,7 @@ const FutureForecast:React.FC = () => {
 
   return (
             <div className="future-forecast">
-                <SelectCity OnCitySelected={onCitySelected}/>
+                <SelectCustom ClassDesc="future-forecast__select" OnCitySelected={onCitySelected}/>
                 {visibleWeather}
             </div>
   )

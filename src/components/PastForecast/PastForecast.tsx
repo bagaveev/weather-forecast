@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import './PastForecast.scss'
 import ErrorChoiceNotif from '../../common/components/EmptyChoiceNotif'
-import SelectCity from '../../common/components/SelectCity'
+// import SelectCity from '../../common/components/SelectCity'
 import InputDate from '../../common/components/InputDate'
 import CalcPastForecast from '../CalcPastForecast/CalcPastForecast'
+import SelectCustom from '../../common/components/SelectCustom'
 
 const PastForecast: React.FC = () => {
   const [city, setCity] = useState('')
@@ -23,7 +24,7 @@ const PastForecast: React.FC = () => {
   return (
         <div className="past-forecast">
             <div className="past-forecast__choice">
-                <SelectCity OnCitySelected={onCitySelected}/>
+                 <SelectCustom ClassDesc="past-forecast__select" OnCitySelected={onCitySelected}/>
                 <InputDate OnDateSelected={onDateSelected}/>
             </div>
             {visibleWeather}

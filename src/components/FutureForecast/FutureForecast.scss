@@ -12,7 +12,7 @@
     }
   }
 
-  select{
+  &__select{
     margin-bottom: 64px;
 
     @include media('(max-width: 820px)') {

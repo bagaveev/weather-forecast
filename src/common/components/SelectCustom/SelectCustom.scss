@@ -1,0 +1,108 @@
+@import "../../../common/styles/common";
+
+.forecast-select-wrapper {
+  position: relative;
+  user-select: none;
+  width: 252px;
+
+  .forecast-select {
+    display: flex;
+    flex-direction: column;
+
+    &__trigger {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #8083A4;
+      background: rgba(128, 131, 164, 0.06);
+      cursor: pointer;
+      border: 2px solid rgba(128, 131, 164, 0.2);
+      border-radius: 8px;
+
+      &.active{
+        color: #2C2D76;
+      }
+
+    }
+
+    &.open {
+
+      .forecast-select__trigger{
+        border: 2px solid #373AF5;
+      }
+
+      .forecast-options {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+      }
+    }
+
+  }
+
+  .forecast-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+    margin-top: 12px;
+    border: 2px solid rgba(128, 131, 164, 0.06);
+    box-shadow: 0 2px 4px rgba(4, 5, 73, 0.16), 14px 14px 20px rgba(5, 6, 114, 0.08);
+    border-radius: 8px;
+    padding: 6px;
+  }
+
+  .forecast-option {
+    position: relative;
+    display: block;
+    padding: 6px 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2C2D76;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 8px;
+  }
+
+  .forecast-option:not(:last-child) {
+    margin-bottom: 6px;
+  }
+
+  .forecast-option:hover {
+    cursor: pointer;
+    background: rgba(128, 131, 164, 0.06);
+  }
+
+  .forecast-option.selected {
+    background: rgba(128, 131, 164, 0.06);
+  }
+
+  .arrow {
+    position: relative;
+    height: 16px;
+    width: 16px;
+    background-image: url("./images/chevron-bottom.svg");
+    transition: all 0.5s
+  }
+
+
+  .open .arrow {
+    transform: rotate(180deg);
+  }
+
+}
